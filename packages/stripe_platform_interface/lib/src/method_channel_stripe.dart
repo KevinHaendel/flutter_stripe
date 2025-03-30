@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:stripe_platform_interface/src/models/ach_params.dart';
 import 'package:stripe_platform_interface/src/models/create_token_data.dart';
@@ -675,7 +676,7 @@ class MethodChannelStripeFactory {
           'flutter.stripe/payments',
           JSONMethodCodec(),
         ),
-        platformIsIos: Platform.isIOS,
-        platformIsAndroid: Platform.isAndroid,
+        platformIsIos: !kIsWeb && Platform.isIOS,
+        platformIsAndroid: !kIsWeb && Platform.isAndroid,
       );
 }
